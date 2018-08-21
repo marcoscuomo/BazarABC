@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cadastro_edtSenha" />
 
     <Button
-        android:id="@+id/btnEntrar"
+        android:id="@+id/cadastro_btnCadastrar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -94,7 +94,7 @@
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEntrar" />
+        app:layout_constraintTop_toBottomOf="@+id/cadastro_btnCadastrar" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -9,4 +9,5 @@
     <string name="edt_email">E-mail</string>
     <string name="nome">Nome</string>
     <string name="cadastrar">Cadastrar</string>
+    <string name="repita_senha">Repita a senha</string>
 </resources>
