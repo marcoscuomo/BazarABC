@@ -6,4 +6,7 @@
     <string name="btn_entrar">Entrar</string>
     <string name="nao_tem_conta">Ainda não tem uma conta? Crie agora, grátis</string>
     <string name="esqueci_senha">Esqueci a senha</string>
+    <string name="edt_email">E-mail</string>
+    <string name="nome">Nome</string>
+    <string name="cadastrar">Cadastrar</string>
 </resources>
