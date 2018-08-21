@@ -30,6 +30,10 @@ public class CadastroActivity extends AppCompatActivity {
                 String senhaRepetida = edtSenhaRepetida.getText().toString();
 
                 verificaSenhaIgual(senha, senhaRepetida);
+                verificaCamposVazios(nome, email, senha, senhaRepetida);
+
+                Toast.makeText(CadastroActivity.this, "Tudo OK", Toast.LENGTH_SHORT).show();
+
 
 
             }
@@ -38,11 +42,21 @@ public class CadastroActivity extends AppCompatActivity {
 
     }
 
+    private void verificaCamposVazios(String nome, String email, String senha, String senhaRepetida) {
+        if(nome.isEmpty()){
+            Toast.makeText(CadastroActivity.this, "Por fafor, preencha seu nome", Toast.LENGTH_SHORT).show();
+        }else if(email.isEmpty()){
+            Toast.makeText(CadastroActivity.this, "Por fafor, preencha seu e-mail", Toast.LENGTH_SHORT).show();
+        }else if(senha.isEmpty()){
+            Toast.makeText(CadastroActivity.this, "Por fafor, preencha sua senha", Toast.LENGTH_SHORT).show();
+        }else if(senhaRepetida.isEmpty()){
+            Toast.makeText(CadastroActivity.this, "Por fafor, preencha sua senha novamente", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void verificaSenhaIgual(String senha, String senhaRepetida) {
         if(!senha.equals(senhaRepetida)){
             Toast.makeText(CadastroActivity.this, "As senhas estão diferentes!", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(CadastroActivity.this, "Tudo OK", Toast.LENGTH_SHORT).show();
         }
     }
 
