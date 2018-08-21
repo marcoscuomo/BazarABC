@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "214909198357",
+    "firebase_url": "https://bazarabc-c1b51.firebaseio.com",
+    "project_id": "bazarabc-c1b51",
+    "storage_bucket": "bazarabc-c1b51.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214909198357:android:8092e3df46c9cb90",
+        "android_client_info": {
+          "package_name": "br.com.mojumob.bazarabc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214909198357-87thq3bsps2fcpotjnju6udr7id1qomj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.mojumob.bazarabc",
+            "certificate_hash": "497418516bd06c2c29c4e48e5dd29a8f4bbb9efd"
+          }
+        },
+        {
+          "client_id": "214909198357-rhjteg1m1jd829er57oo5ic9rk2joecd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIvqSFXZjDnLw77ORHxhNhAteALzofwDs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214909198357-rhjteg1m1jd829er57oo5ic9rk2joecd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
