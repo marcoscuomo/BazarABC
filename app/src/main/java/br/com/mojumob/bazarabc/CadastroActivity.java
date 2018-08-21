@@ -15,8 +15,18 @@ public class CadastroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+        inicializaComponentes();
 
 
 
+
+    }
+
+    private void inicializaComponentes() {
+        //Inicializações
+        edtNome = findViewById(R.id.cadastro_edtNome);
+        edtEmail = findViewById(R.id.cadastro_edtEmail);
+        edtSenha = findViewById(R.id.cadastro_edtSenha);
+        edtSenhaRepetida = findViewById(R.id.cadastro_edtSenhaRepetida);
     }
 }
