@@ -9,6 +9,8 @@ import android.widget.Spinner;
 
 import com.blackcat.currencyedittext.CurrencyEditText;
 
+import java.util.Locale;
+
 import br.com.mojumob.bazarabc.R;
 
 public class CadastroAnuncioActivity extends AppCompatActivity {
@@ -25,7 +27,12 @@ public class CadastroAnuncioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_anuncio);
+        inicializaComponentes();
 
+
+    }
+
+    private void inicializaComponentes() {
         //Inicializações
         edtTitulo    = findViewById(R.id.cadastroAnuncio_edtTitulo);
         campoValor   = findViewById(R.id.cadastroAnuncio_edtValor);
@@ -34,5 +41,8 @@ public class CadastroAnuncioActivity extends AppCompatActivity {
         spCategoria  = findViewById(R.id.cadastroAnuncio_spCategoria);
         btnCadastrar = findViewById(R.id.cadastroAnuncio_btnCadastrar);
 
+        //Configura a localidade para pt-br
+        Locale locale = new Locale("pt", "BR");
+        campoValor.setLocale(locale);
     }
 }
