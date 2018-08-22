@@ -24,10 +24,12 @@ public class CadastroAnuncioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_anuncio);
 
         //Inicializações
-        edtTitulo = findViewById(R.id.cadastroAnuncio_edtTitulo);
-        edtValor = findViewById(R.id.cadastroAnuncio_edtValor);
+        edtTitulo    = findViewById(R.id.cadastroAnuncio_edtTitulo);
+        edtValor     = findViewById(R.id.cadastroAnuncio_edtValor);
         edtDescricao = findViewById(R.id.cadastroAnuncio_edtDescricao);
-
+        spCidade     = findViewById(R.id.cadastroAnuncio_spCidade);
+        spCategoria  = findViewById(R.id.cadastroAnuncio_spCategoria);
+        btnCadastrar = findViewById(R.id.cadastroAnuncio_btnCadastrar);
 
     }
 }
