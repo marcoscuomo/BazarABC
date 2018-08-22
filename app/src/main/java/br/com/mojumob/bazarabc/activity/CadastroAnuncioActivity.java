@@ -7,12 +7,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import com.blackcat.currencyedittext.CurrencyEditText;
+
 import br.com.mojumob.bazarabc.R;
 
 public class CadastroAnuncioActivity extends AppCompatActivity {
 
     //Atributos
     private EditText edtTitulo, edtValor, edtDescricao;
+    private CurrencyEditText campoValor;
     private Spinner spCidade, spCategoria;
     private ImageView imgAnuncio1, imgAnuncio2, imgAnuncio3;
     private Button btnCadastrar;
@@ -25,7 +28,7 @@ public class CadastroAnuncioActivity extends AppCompatActivity {
 
         //Inicializações
         edtTitulo    = findViewById(R.id.cadastroAnuncio_edtTitulo);
-        edtValor     = findViewById(R.id.cadastroAnuncio_edtValor);
+        campoValor   = findViewById(R.id.cadastroAnuncio_edtValor);
         edtDescricao = findViewById(R.id.cadastroAnuncio_edtDescricao);
         spCidade     = findViewById(R.id.cadastroAnuncio_spCidade);
         spCategoria  = findViewById(R.id.cadastroAnuncio_spCategoria);
