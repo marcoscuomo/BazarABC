@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.blackcat.currencyedittext.CurrencyEditText;
 
@@ -44,6 +45,9 @@ public class CadastroAnuncioActivity extends AppCompatActivity {
 
     private void salvarAnuncio() {
 
+        //Pega os valores
+        String valor = campoValor.getHintString();
+        Toast.makeText(CadastroAnuncioActivity.this, "Valor: " + valor, Toast.LENGTH_SHORT).show();
     }
 
     private void inicializaComponentes() {

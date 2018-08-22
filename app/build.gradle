@@ -37,7 +37,7 @@ dependencies {
 
     //Mascaras
     implementation 'com.github.BlacKCaT27:CurrencyEditText:2.0.2'
-
+    implementation 'com.github.santalu:mask-edittext:1.0.9'
 
 }
 apply plugin: 'com.google.gms.google-services'
