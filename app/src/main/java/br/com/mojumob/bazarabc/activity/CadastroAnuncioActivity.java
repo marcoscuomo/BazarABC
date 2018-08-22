@@ -46,12 +46,13 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
     private Button btnCadastrar;
     private Anuncio anuncio;
     private StorageReference storage;
+    private List<String> listaFotosRecuperada = new ArrayList<>();
+    private List<String> listaUrlFotos = new ArrayList<>();
 
     private String[] permissoes = new String[]{
             Manifest.permission.READ_EXTERNAL_STORAGE
     };
 
-    private List<String> listaFotosRecuperada = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,7 +168,7 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
 
     }
 
-    private void salvarFotosStorage(String urlString, int totalFotos, int contador) {
+    private void salvarFotosStorage(String urlString, final int totalFotos, int contador) {
 
         //Cria nó no stoge
         StorageReference imagemAnuncio = storage
@@ -183,7 +184,12 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Uri firebaseUrl = taskSnapshot.getDownloadUrl();
                 String urlCovertida = firebaseUrl.toString();
-                exibirMensagemErro("Tudo ok, foi");
+                listaUrlFotos.add(urlCovertida);
+
+                if(totalFotos == listaUrlFotos.size()){
+                    anuncio.setFotos(listaUrlFotos);
+                }
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
