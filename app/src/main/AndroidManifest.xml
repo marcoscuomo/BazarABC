@@ -11,7 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".activity.AnunciosActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,17 +18,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.CadastroActivity"
-            android:theme="@style/AppTheme.NoActioBar"
-            />
-
+            android:theme="@style/AppTheme.NoActioBar" />
         <activity
             android:name=".activity.LoginActivity"
-            android:theme="@style/AppTheme.NoActioBar"
-            />
-
+            android:theme="@style/AppTheme.NoActioBar" />
+        <activity
+            android:name=".activity.MeusAnunciosActivity"
+            android:label="@string/title_activity_meus_anuncios"
+            android:parentActivityName=".activity.AnunciosActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.mojumob.bazarabc.activity.AnunciosActivity" />
+        </activity>
     </application>
 
 </manifest>
