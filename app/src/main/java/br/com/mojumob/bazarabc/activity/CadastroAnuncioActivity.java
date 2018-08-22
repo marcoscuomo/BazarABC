@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.MediaDataSource;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -13,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,12 +22,17 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.blackcat.currencyedittext.CurrencyEditText;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import br.com.mojumob.bazarabc.R;
+import br.com.mojumob.bazarabc.helper.ConfiguracaoFirebase;
 import br.com.mojumob.bazarabc.helper.Permissoes;
 import br.com.mojumob.bazarabc.model.Anuncio;
 
@@ -40,6 +45,7 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
     private ImageView imgAnuncio1, imgAnuncio2, imgAnuncio3;
     private Button btnCadastrar;
     private Anuncio anuncio;
+    private StorageReference storage;
 
     private String[] permissoes = new String[]{
             Manifest.permission.READ_EXTERNAL_STORAGE
@@ -57,6 +63,9 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
 
         inicializaComponentes();
         carregarDadosSpinner();
+
+        //Firebaseauth
+        storage = ConfiguracaoFirebase.getFirebaseStorage();
 
 
         //Evento clique do botao cadastrar anuncio
@@ -147,9 +156,42 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
 
         if(validaDadosAnuncio()){
 
+            //Salvar imagens no storage
+            for(int i=0; i < listaFotosRecuperada.size(); i++){
+                String urlImagem = listaFotosRecuperada.get(i);
+                int tamanhoLista = listaFotosRecuperada.size();
+                salvarFotosStorage(urlImagem, tamanhoLista, i);
+            }
 
         }
 
+    }
+
+    private void salvarFotosStorage(String urlString, int totalFotos, int contador) {
+
+        //Cria nó no stoge
+        StorageReference imagemAnuncio = storage
+                .child("imagens")
+                .child("anuncios")
+                .child(anuncio.getIdAnuncio())
+                .child("imagem"+contador);
+
+        //Faz o upload do arquivo
+        UploadTask uploadTask = imagemAnuncio.putFile(Uri.parse(urlString));
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Uri firebaseUrl = taskSnapshot.getDownloadUrl();
+                String urlCovertida = firebaseUrl.toString();
+                exibirMensagemErro("Tudo ok, foi");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                exibirMensagemErro("Falha ao fazer o upload");
+                Log.i("INFO", "Falha ao fazer o upload: " + e.getMessage());
+            }
+        });
     }
 
     private Anuncio configurarAnuncio(){
@@ -176,18 +218,11 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
 
         anuncio = configurarAnuncio();
 
-        //Pegando os valores
-        String cidade = spCidade.getSelectedItem().toString();
-        String categoria = spCategoria.getSelectedItem().toString();
-        String titulo = edtTitulo.getText().toString();
-        String valor = String.valueOf(campoValor.getRawValue());
-        String descricao = edtDescricao.getText().toString();
-
         if(listaFotosRecuperada.size() != 0){
             if(!anuncio.getCidade().isEmpty()){
                 if(!anuncio.getCategoria().isEmpty()){
                     if(!anuncio.getTitulo().isEmpty()){
-                        if(!anuncio.getValor().isEmpty() && !valor.equals("0")){
+                        if(!anuncio.getValor().isEmpty() && !anuncio.getValor().equals("0")){
                             if(!anuncio.getDescricao().isEmpty()){
                                 return true;
                             }else{
