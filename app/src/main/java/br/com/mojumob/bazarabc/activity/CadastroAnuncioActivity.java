@@ -29,6 +29,7 @@ import java.util.Locale;
 
 import br.com.mojumob.bazarabc.R;
 import br.com.mojumob.bazarabc.helper.Permissoes;
+import br.com.mojumob.bazarabc.model.Anuncio;
 
 public class CadastroAnuncioActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,6 +39,7 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
     private Spinner spCidade, spCategoria;
     private ImageView imgAnuncio1, imgAnuncio2, imgAnuncio3;
     private Button btnCadastrar;
+    private Anuncio anuncio;
 
     private String[] permissoes = new String[]{
             Manifest.permission.READ_EXTERNAL_STORAGE
@@ -116,8 +118,6 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
         startActivityForResult(i, requestCode);
     }
 
-    //Pega o resultado da Activity
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -147,11 +147,34 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
 
         if(validaDadosAnuncio()){
 
+
         }
 
     }
 
+    private Anuncio configurarAnuncio(){
+
+        //Pegando os valores
+        String cidade = spCidade.getSelectedItem().toString();
+        String categoria = spCategoria.getSelectedItem().toString();
+        String titulo = edtTitulo.getText().toString();
+        String valor = String.valueOf(campoValor.getRawValue());
+        String descricao = edtDescricao.getText().toString();
+
+        Anuncio anuncio = new Anuncio();
+        anuncio.setCidade(cidade);
+        anuncio.setCategoria(categoria);
+        anuncio.setTitulo(titulo);
+        anuncio.setValor(valor);
+        anuncio.setDescricao(descricao);
+
+        return anuncio;
+
+    }
+
     private boolean validaDadosAnuncio() {
+
+        anuncio = configurarAnuncio();
 
         //Pegando os valores
         String cidade = spCidade.getSelectedItem().toString();
@@ -161,11 +184,11 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
         String descricao = edtDescricao.getText().toString();
 
         if(listaFotosRecuperada.size() != 0){
-            if(!cidade.isEmpty()){
-                if(!categoria.isEmpty()){
-                    if(!titulo.isEmpty()){
-                        if(!valor.isEmpty() && !valor.equals("0")){
-                            if(!descricao.isEmpty()){
+            if(!anuncio.getCidade().isEmpty()){
+                if(!anuncio.getCategoria().isEmpty()){
+                    if(!anuncio.getTitulo().isEmpty()){
+                        if(!anuncio.getValor().isEmpty() && !valor.equals("0")){
+                            if(!anuncio.getDescricao().isEmpty()){
                                 return true;
                             }else{
                                 exibirMensagemErro("Coloque uma descricao para o seu anúncio");
