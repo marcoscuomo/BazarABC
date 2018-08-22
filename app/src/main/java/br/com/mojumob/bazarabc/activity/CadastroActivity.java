@@ -30,6 +30,7 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
+
         inicializaComponentes();
         //Tratando o evento de click no botao cadastar
         btnCadastrar.setOnClickListener(new View.OnClickListener() {

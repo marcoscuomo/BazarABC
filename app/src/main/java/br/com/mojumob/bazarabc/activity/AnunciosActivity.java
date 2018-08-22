@@ -15,7 +15,7 @@ public class AnunciosActivity extends AppCompatActivity {
 
     //Atributos
     private FirebaseAuth autenticacao;
-    private Toolbar toolbar;
+    //private Toolbar toolbar;
 
 
     @Override
@@ -25,8 +25,9 @@ public class AnunciosActivity extends AppCompatActivity {
         inicializacoes();
 
         //Toolbar
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //setSupportActionBar(toolbar);
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
     }
 
@@ -71,12 +72,12 @@ public class AnunciosActivity extends AppCompatActivity {
     }
 
     private void vaiParaTelaCadastro() {
-        startActivity(new Intent(AnunciosActivity.this, CadastroActivity.class));
+        startActivity(new Intent(AnunciosActivity.this, LoginActivity.class));
     }
 
     private void inicializacoes() {
         //Inicializações
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
-        toolbar = findViewById(R.id.toolbar);
+        //toolbar = findViewById(R.id.toolbar);
     }
 }
