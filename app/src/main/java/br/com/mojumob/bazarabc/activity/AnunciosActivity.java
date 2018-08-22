@@ -60,8 +60,7 @@ public class AnunciosActivity extends AppCompatActivity {
                 break;
             case R.id.menu_sair:
                 autenticacao.signOut();
-                finish();
-                vaiParaTelaCadastro();
+                invalidateOptionsMenu();
                 break;
             case R.id.menu_anuncios:
                 break;
