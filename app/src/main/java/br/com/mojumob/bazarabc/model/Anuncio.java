@@ -25,9 +25,12 @@ public class Anuncio {
     public void salvar(){
         DatabaseReference anuncioRef = ConfiguracaoFirebase.getFirebase()
                 .child("meus_anuncios");
+
+        String idUsuario = ConfiguracaoFirebase.getIdUsuario();
+
         anuncioRef
-                .child("idusuario")
-                .child("idanuncio")
+                .child(idUsuario)
+                .child(getIdAnuncio())
                 .setValue(this);
     }
 
