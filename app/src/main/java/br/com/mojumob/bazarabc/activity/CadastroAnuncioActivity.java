@@ -78,11 +78,19 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
                 "Automóveis","Imóveis", "Eletronicos", "Moda", "Esportes", "Música", "Infantil", "Agro"
         };
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        //Configura o spinner Cidades
+        ArrayAdapter<String> adapterCidades = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, cidades
         );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spCidade.setAdapter(adapter);
+        adapterCidades.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spCidade.setAdapter(adapterCidades);
+
+        //Configura o spinner Categorias
+        ArrayAdapter<String> adapterCategorias = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, categorias);
+        adapterCategorias.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spCategoria.setAdapter(adapterCategorias);
+
 
     }
 
