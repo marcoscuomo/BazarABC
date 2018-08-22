@@ -72,11 +72,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_edtTelefone" />
+        app:layout_constraintTop_toBottomOf="@+id/login_edtTelefone2" />
 
 
-    <EditText
-        android:id="@+id/login_edtTelefone"
+    <com.santalu.widget.MaskEditText
+        android:id="@+id/login_edtTelefone2"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginEnd="24dp"
@@ -85,17 +85,21 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/style_edtitext_login"
-        android:drawableLeft="@drawable/ic_lock_white_24dp"
+        android:drawableLeft="@drawable/ic_local_phone_white_24dp"
         android:ems="10"
-        android:hint="@string/senha"
+        android:hint="@string/telefone"
         android:inputType="phone"
         android:paddingLeft="10dp"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
+        app:met_mask="(##)#####-####"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cadastro_edtEmail" />
+
+
+
 
     <EditText
         android:id="@+id/login_edtSenha"
