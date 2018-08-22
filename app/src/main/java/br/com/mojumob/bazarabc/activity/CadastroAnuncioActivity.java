@@ -2,6 +2,7 @@ package br.com.mojumob.bazarabc.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,6 +30,19 @@ public class CadastroAnuncioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_anuncio);
         inicializaComponentes();
 
+
+        //Evento clique do botao cadastrar anuncio
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                salvarAnuncio();
+            }
+        });
+
+
+    }
+
+    private void salvarAnuncio() {
 
     }
 
