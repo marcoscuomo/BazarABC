@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.santalu.widget.MaskEditText;
 
 import br.com.mojumob.bazarabc.R;
 import br.com.mojumob.bazarabc.helper.ConfiguracaoFirebase;
@@ -24,6 +25,7 @@ public class CadastroActivity extends AppCompatActivity {
     private EditText edtNome, edtEmail, edtSenha, edtSenhaRepetida;
     private Button btnCadastrar;
     private FirebaseAuth autenticacao;
+    private MaskEditText campoTelefone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,5 +120,6 @@ public class CadastroActivity extends AppCompatActivity {
         edtSenhaRepetida = findViewById(R.id.login_edtSenha);
         btnCadastrar = findViewById(R.id.cadastro_btnCadastrar);
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        campoTelefone = findViewById(R.id.login_edtTelefone);
     }
 }
