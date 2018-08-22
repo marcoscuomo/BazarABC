@@ -145,12 +145,52 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
 
     private void salvarAnuncio() {
 
-        validaDadosAnuncio();
+        if(validaDadosAnuncio()){
+
+        }
 
     }
 
-    private void validaDadosAnuncio() {
+    private boolean validaDadosAnuncio() {
 
+        //Pegando os valores
+        String cidade = spCidade.getSelectedItem().toString();
+        String categoria = spCategoria.getSelectedItem().toString();
+        String titulo = edtTitulo.getText().toString();
+        String valor = String.valueOf(campoValor.getRawValue());
+        String descricao = edtDescricao.getText().toString();
+
+        if(listaFotosRecuperada.size() != 0){
+            if(!cidade.isEmpty()){
+                if(!categoria.isEmpty()){
+                    if(!titulo.isEmpty()){
+                        if(!valor.isEmpty() && !valor.equals("0")){
+                            if(!descricao.isEmpty()){
+                                return true;
+                            }else{
+                                exibirMensagemErro("Coloque uma descricao para o seu anúncio");
+                            }
+                        }else{
+                            exibirMensagemErro("Infome um valor para seu produto");
+                        }
+                    }else{
+                        exibirMensagemErro("Escreve um titulo para seu anúncio");
+                    }
+                }else {
+                    exibirMensagemErro("Selecione a categoria do produto");
+                }
+            }else{
+                exibirMensagemErro("Selecione sua cidade ");
+            }
+        }else{
+            exibirMensagemErro("Selecione ao menos uma foto");
+        }
+
+        return false;
+    }
+
+    private void exibirMensagemErro(String texto) {
+        Toast.makeText(this, texto, Toast.LENGTH_SHORT).show();
     }
 
     private void inicializaComponentes() {
