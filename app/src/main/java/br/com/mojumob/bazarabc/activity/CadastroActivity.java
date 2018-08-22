@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -17,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 import br.com.mojumob.bazarabc.R;
+import br.com.mojumob.bazarabc.helper.ConfiguracaoFirebase;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -41,15 +41,15 @@ public class CadastroActivity extends AppCompatActivity {
                 String senha = edtSenha.getText().toString();
                 String senhaRepetida = edtSenhaRepetida.getText().toString();
 
-                verificaSenhaIgual(senha, senhaRepetida);
 
-                if(verificaCamposVazios(nome, email, senha, senhaRepetida)){
+                if(verificaCamposVazios(nome, email, senha, senhaRepetida) && verificaSenhaIgual(senha, senhaRepetida)){
                     autenticacao.createUserWithEmailAndPassword(email, senha)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(CadastroActivity.this, "Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
+                                finish();
                             }else{
 
                                 String erroExecao = "";
@@ -99,18 +99,23 @@ public class CadastroActivity extends AppCompatActivity {
         return false;
     }
 
-    private void verificaSenhaIgual(String senha, String senhaRepetida) {
+    private boolean verificaSenhaIgual(String senha, String senhaRepetida) {
         if(!senha.equals(senhaRepetida)){
             Toast.makeText(CadastroActivity.this, "As senhas estão diferentes!", Toast.LENGTH_SHORT).show();
+        }else{
+            return true;
         }
+
+        return false;
     }
 
     private void inicializaComponentes() {
         //Inicializações
         edtNome = findViewById(R.id.cadastro_edtNome);
         edtEmail = findViewById(R.id.cadastro_edtEmail);
-        edtSenha = findViewById(R.id.cadastro_edtSenha);
-        edtSenhaRepetida = findViewById(R.id.cadastro_edtSenhaRepetida);
+        edtSenha = findViewById(R.id.login_edtLogin);
+        edtSenhaRepetida = findViewById(R.id.login_edtSenha);
         btnCadastrar = findViewById(R.id.cadastro_btnCadastrar);
+        autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
     }
 }
