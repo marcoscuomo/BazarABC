@@ -1,6 +1,10 @@
 package br.com.mojumob.bazarabc.model;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.List;
+
+import br.com.mojumob.bazarabc.helper.ConfiguracaoFirebase;
 
 public class Anuncio {
 
@@ -13,6 +17,9 @@ public class Anuncio {
     private List<String> fotos;
 
     public Anuncio() {
+        DatabaseReference anuncioRef = ConfiguracaoFirebase.getFirebase()
+                .child("meus_anuncios");
+        setIdAnuncio(anuncioRef.push().getKey());
     }
 
     public String getIdAnuncio() {
