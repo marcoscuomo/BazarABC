@@ -30,8 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        inicializaComponentes();
 
+        inicializaComponentes();
 
         //Evento clique no Botao entrar
         btnEntrar.setOnClickListener(new View.OnClickListener() {
