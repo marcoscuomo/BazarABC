@@ -64,12 +64,15 @@
         android:hint="@string/titulo"
         android:inputType="textPersonName" />
 
-    <EditText
+
+    <com.blackcat.currencyedittext.CurrencyEditText
+        android:id="@+id/cadastroAnuncio_edtValor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/valor"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        />
 
     <EditText
         android:layout_width="match_parent"
