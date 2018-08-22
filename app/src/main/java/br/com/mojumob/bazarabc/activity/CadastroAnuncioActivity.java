@@ -145,9 +145,12 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
 
     private void salvarAnuncio() {
 
-        //Pega os valores
-        String valor = campoValor.getHintString();
-        Toast.makeText(CadastroAnuncioActivity.this, "Valor: " + valor, Toast.LENGTH_SHORT).show();
+        validaDadosAnuncio();
+
+    }
+
+    private void validaDadosAnuncio() {
+
     }
 
     private void inicializaComponentes() {
