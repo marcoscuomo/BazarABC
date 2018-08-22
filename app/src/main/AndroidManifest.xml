@@ -32,6 +32,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.com.mojumob.bazarabc.activity.AnunciosActivity" />
         </activity>
+        <activity android:name=".activity.CadastroAnuncioActivity"></activity>
     </application>
 
 </manifest>
