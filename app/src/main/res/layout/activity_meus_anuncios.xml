@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".activity.MeusAnunciosActivity">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@drawable/ic_add_white_24dp"
+        tools:layout_editor_absoluteX="303dp"
+        tools:layout_editor_absoluteY="454dp" />
 </android.support.constraint.ConstraintLayout>
