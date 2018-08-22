@@ -3,11 +3,10 @@ package br.com.mojumob.bazarabc.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.google.firebase.auth.FirebaseAuth;
-
 import br.com.mojumob.bazarabc.R;
 import br.com.mojumob.bazarabc.helper.ConfiguracaoFirebase;
 
@@ -16,6 +15,7 @@ public class AnunciosActivity extends AppCompatActivity {
 
     //Atributos
     private FirebaseAuth autenticacao;
+    private Toolbar toolbar;
 
 
     @Override
@@ -24,6 +24,9 @@ public class AnunciosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_anuncios);
         inicializacoes();
 
+        //Toolbar
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
     }
 
@@ -74,5 +77,6 @@ public class AnunciosActivity extends AppCompatActivity {
     private void inicializacoes() {
         //Inicializações
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        toolbar = findViewById(R.id.toolbar);
     }
 }
