@@ -9,7 +9,7 @@
     <include layout="@layout/content_meus_anuncios"/>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/fabMeusAnuncios"
         android:layout_width="?attr/fabAlignmentMode"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
