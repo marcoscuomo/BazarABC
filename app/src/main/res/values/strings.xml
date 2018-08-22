@@ -16,4 +16,5 @@
     <string name="descricao">Descrição</string>
     <string name="cadastrar_anuncio">Cadastrar Anuncio</string>
     <string name="telefone">Telefone</string>
+    <string name="celular">Celular</string>
 </resources>
