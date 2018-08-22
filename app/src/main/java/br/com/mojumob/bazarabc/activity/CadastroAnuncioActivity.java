@@ -1,5 +1,6 @@
 package br.com.mojumob.bazarabc.activity;
 
+import android.Manifest;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,11 +25,19 @@ public class CadastroAnuncioActivity extends AppCompatActivity {
     private ImageView imgAnuncio1, imgAnuncio2, imgAnuncio3;
     private Button btnCadastrar;
 
+    private String[] permissoes = new String[]{
+            Manifest.permission.READ_EXTERNAL_STORAGE
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_anuncio);
+
+        //Validar permissoes
+
+
         inicializaComponentes();
 
 
