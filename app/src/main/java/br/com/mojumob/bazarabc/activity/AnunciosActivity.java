@@ -63,6 +63,7 @@ public class AnunciosActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
                 break;
             case R.id.menu_anuncios:
+                startActivity(new Intent(AnunciosActivity.this, MeusAnunciosActivity.class));
                 break;
 
         }

@@ -11,4 +11,8 @@
     <string name="cadastrar">Cadastrar</string>
     <string name="repita_senha">Repita a senha</string>
     <string name="title_activity_meus_anuncios">MeusAnunciosActivity</string>
+    <string name="titulo">Titulo</string>
+    <string name="valor">Valor</string>
+    <string name="descricao">Descrição</string>
+    <string name="cadastrar_anuncio">Cadastrar Anuncio</string>
 </resources>

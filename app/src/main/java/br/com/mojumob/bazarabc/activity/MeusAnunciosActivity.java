@@ -1,5 +1,6 @@
 package br.com.mojumob.bazarabc.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.support.design.widget.FloatingActionButton;
@@ -25,7 +26,7 @@ public class MeusAnunciosActivity extends Activity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(MeusAnunciosActivity.this, CadastroAnuncioActivity.class));
             }
         });
 
