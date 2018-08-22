@@ -14,6 +14,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -70,8 +71,18 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
     private void carregarDadosSpinner() {
 
         String[] cidades = new String[]{
-
+            "Diadema","Santo André", "São Bernardo", "São Caetano"
         };
+
+        String[] categorias = new String[]{
+                "Automóveis","Imóveis", "Eletronicos", "Moda", "Esportes", "Música", "Infantil", "Agro"
+        };
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, cidades
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spCidade.setAdapter(adapter);
 
     }
 
