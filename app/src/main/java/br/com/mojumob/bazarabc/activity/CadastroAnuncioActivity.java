@@ -188,6 +188,7 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
 
                 if(totalFotos == listaUrlFotos.size()){
                     anuncio.setFotos(listaUrlFotos);
+                    anuncio.salvar();
                 }
 
             }
