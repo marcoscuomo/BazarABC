@@ -69,6 +69,10 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
 
     private void carregarDadosSpinner() {
 
+        String[] cidades = new String[]{
+
+        };
+
     }
 
     @Override
