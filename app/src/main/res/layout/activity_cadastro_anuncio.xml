@@ -45,12 +45,14 @@
         android:layout_marginBottom="16dp">
 
         <Spinner
+            android:id="@+id/cadastroAnuncio_spCidade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             />
 
         <Spinner
+            android:id="@+id/cadastroAnuncio_spCategoria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
