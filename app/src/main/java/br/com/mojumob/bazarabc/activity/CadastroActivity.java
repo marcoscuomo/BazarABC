@@ -114,12 +114,12 @@ public class CadastroActivity extends AppCompatActivity {
 
     private void inicializaComponentes() {
         //Inicializações
-        edtNome = findViewById(R.id.cadastro_edtNome);
-        edtEmail = findViewById(R.id.cadastro_edtEmail);
-        edtSenha = findViewById(R.id.login_edtLogin);
+        edtNome          = findViewById(R.id.cadastro_edtNome);
+        edtEmail         = findViewById(R.id.cadastro_edtEmail);
+        edtSenha         = findViewById(R.id.login_edtLogin);
         edtSenhaRepetida = findViewById(R.id.login_edtSenha);
-        btnCadastrar = findViewById(R.id.cadastro_btnCadastrar);
-        autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
-        campoTelefone = findViewById(R.id.login_edtTelefone);
+        btnCadastrar     = findViewById(R.id.cadastro_btnCadastrar);
+        campoTelefone    = findViewById(R.id.login_edtTelefone);
+        autenticacao     = ConfiguracaoFirebase.getFirebaseAutenticacao();
     }
 }
