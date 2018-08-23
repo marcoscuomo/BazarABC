@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -29,6 +30,7 @@ import java.util.List;
 import br.com.mojumob.bazarabc.R;
 import br.com.mojumob.bazarabc.adapter.AdapterAnuncios;
 import br.com.mojumob.bazarabc.helper.ConfiguracaoFirebase;
+import br.com.mojumob.bazarabc.helper.RecyclerItemClickListener;
 import br.com.mojumob.bazarabc.model.Anuncio;
 import dmax.dialog.SpotsDialog;
 
@@ -68,6 +70,26 @@ public class AnunciosActivity extends AppCompatActivity {
         recyclerAnunciosPublicos.setAdapter(adapter);
 
         recuperaAnunciosPublicos();
+
+        //Aplicar evento de clique no RecyclerView
+        recyclerAnunciosPublicos.addOnItemTouchListener(new RecyclerItemClickListener(
+                AnunciosActivity.this, recyclerAnunciosPublicos, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Anuncio anuncioSelecionado = listaAnuncios.get(position);
+
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        }));
 
         //Toolbar
         //setSupportActionBar(toolbar);
