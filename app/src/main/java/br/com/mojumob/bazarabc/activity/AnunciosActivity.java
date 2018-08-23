@@ -1,5 +1,6 @@
 package br.com.mojumob.bazarabc.activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import br.com.mojumob.bazarabc.R;
 import br.com.mojumob.bazarabc.adapter.AdapterAnuncios;
 import br.com.mojumob.bazarabc.helper.ConfiguracaoFirebase;
 import br.com.mojumob.bazarabc.model.Anuncio;
+import dmax.dialog.SpotsDialog;
 
 
 public class AnunciosActivity extends AppCompatActivity {
@@ -34,6 +36,7 @@ public class AnunciosActivity extends AppCompatActivity {
     private List<Anuncio> listaAnuncios = new ArrayList<>();
     private AdapterAnuncios adapter;
     private DatabaseReference anunciosPublicosRef;
+    private AlertDialog dialog;
     //private Toolbar toolbar;
 
 
@@ -66,6 +69,13 @@ public class AnunciosActivity extends AppCompatActivity {
 
     public void recuperaAnunciosPublicos(){
 
+        dialog = new SpotsDialog.Builder()
+                .setContext(this)
+                .setMessage("Recuperando o anúncios")
+                .setCancelable(false)
+                .build();
+        dialog.show();
+
         listaAnuncios.clear();
         anunciosPublicosRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -79,14 +89,17 @@ public class AnunciosActivity extends AppCompatActivity {
                                 categorias.getChildren()) {
                             Anuncio anuncio = anunciosDS.getValue(Anuncio.class);
                             listaAnuncios.add(anuncio);
-                            Collections.reverse(listaAnuncios);
-                            adapter.notifyDataSetChanged();
                         }
 
                     }
                 }
-                
+
+                Collections.reverse(listaAnuncios);
+                adapter.notifyDataSetChanged();
+                dialog.dismiss();
             }
+
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
