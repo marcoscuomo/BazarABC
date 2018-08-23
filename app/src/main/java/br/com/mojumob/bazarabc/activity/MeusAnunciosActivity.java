@@ -5,10 +5,16 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.mojumob.bazarabc.R;
+import br.com.mojumob.bazarabc.model.Anuncio;
 
 
 public class MeusAnunciosActivity extends AppCompatActivity {
@@ -17,6 +23,7 @@ public class MeusAnunciosActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private RecyclerView recyclerAnuncios;
     private Toolbar toolbar;
+    private List<Anuncio> listaAnuncios = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +34,11 @@ public class MeusAnunciosActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //Configura RecylerView
+        recyclerAnuncios.setLayoutManager(new LinearLayoutManager(MeusAnunciosActivity.this));
+        recyclerAnuncios.setHasFixedSize(true);
+        //recyclerAnuncios.setAdapter(adapter);
 
 
 
