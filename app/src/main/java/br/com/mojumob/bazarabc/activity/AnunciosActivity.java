@@ -42,6 +42,7 @@ public class AnunciosActivity extends AppCompatActivity {
     private AdapterAnuncios adapter;
     private DatabaseReference anunciosPublicosRef;
     private AlertDialog dialog;
+    private String filtroCidade = "";
     //private Toolbar toolbar;
 
 
@@ -81,7 +82,7 @@ public class AnunciosActivity extends AppCompatActivity {
         View viewSpninner = getLayoutInflater() .inflate(R.layout.dialog_spinner, null);
         dialogCidade.setView(viewSpninner);
 
-        Spinner spCidade = viewSpninner.findViewById(R.id.spinnerFiltro);
+        final Spinner spCidade = viewSpninner.findViewById(R.id.spinnerFiltro);
         String[] cidades = new String[]{
                 "Diadema","Santo André", "São Bernardo", "São Caetano"
         };
@@ -98,6 +99,8 @@ public class AnunciosActivity extends AppCompatActivity {
         dialogCidade.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                filtroCidade = spCidade.getSelectedItem().toString();
+                recuperarAnucioPorCidade();
 
             }
         });
@@ -112,6 +115,35 @@ public class AnunciosActivity extends AppCompatActivity {
         Dialog dialog = dialogCidade.create();
         dialog.show();
 
+    }
+
+    private void recuperarAnucioPorCidade() {
+        anunciosPublicosRef = ConfiguracaoFirebase.getFirebase()
+                                            .child("anuncios")
+                                            .child(filtroCidade);
+
+        anunciosPublicosRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listaAnuncios.clear();
+                for (DataSnapshot categorias :
+                        dataSnapshot.getChildren()) {
+                    for (DataSnapshot anunciosDS :
+                            categorias.getChildren()) {
+                        Anuncio anuncio = anunciosDS.getValue(Anuncio.class);
+                        listaAnuncios.add(anuncio);
+                    }
+                }
+
+                Collections.reverse(listaAnuncios);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void recuperaAnunciosPublicos(){
