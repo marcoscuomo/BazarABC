@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.mojumob.bazarabc.R;
+import br.com.mojumob.bazarabc.adapter.AdapterAnuncios;
 import br.com.mojumob.bazarabc.model.Anuncio;
 
 
@@ -24,6 +25,7 @@ public class MeusAnunciosActivity extends AppCompatActivity {
     private RecyclerView recyclerAnuncios;
     private Toolbar toolbar;
     private List<Anuncio> listaAnuncios = new ArrayList<>();
+    private AdapterAnuncios adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,8 @@ public class MeusAnunciosActivity extends AppCompatActivity {
         //Configura RecylerView
         recyclerAnuncios.setLayoutManager(new LinearLayoutManager(MeusAnunciosActivity.this));
         recyclerAnuncios.setHasFixedSize(true);
-        //recyclerAnuncios.setAdapter(adapter);
+        adapter = new AdapterAnuncios(MeusAnunciosActivity.this, listaAnuncios);
+        recyclerAnuncios.setAdapter(adapter);
 
 
 
