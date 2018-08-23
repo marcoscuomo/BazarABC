@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="8dp"
     tools:context=".activity.DetalhesProdutosActivity">
 
     <com.synnapps.carouselview.CarouselView
@@ -25,14 +24,15 @@
         android:id="@+id/detalhes_txtTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_margin="8dp"
         android:textSize="16dp" />
 
     <TextView
         android:id="@+id/detalhes_txtPreco"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_margin="8dp"
+        android:text=""
         android:textSize="20sp"
         android:textStyle="bold"
         android:paddingBottom="8dp"
@@ -41,6 +41,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_margin="8dp"
         android:background="@color/colorPrimary"
         />
 
@@ -48,7 +49,7 @@
         android:id="@+id/detalhes_txtCidade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:layout_margin="8dp"
         android:text="TextView"
         android:drawableLeft="@drawable/ic_location_on_24dp"
         />
@@ -56,6 +57,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_margin="8dp"
         android:background="@color/colorPrimary"
 
         />
@@ -64,7 +66,6 @@
         android:id="@+id/detalhes_txtDescricao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
         android:layout_margin="10dp"
         android:text="TextView" />
 
@@ -72,6 +73,7 @@
         android:id="@+id/detalhes_btnLigar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:background="@drawable/style_btn_login"
         android:text="@string/ligar"
         android:textColor="@android:color/white" />
