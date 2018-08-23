@@ -76,7 +76,8 @@
         android:layout_margin="8dp"
         android:background="@drawable/style_btn_login"
         android:text="@string/ligar"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:onClick="visualizarTelefone"/>
 
 
 </LinearLayout>

@@ -1,7 +1,10 @@
 package br.com.mojumob.bazarabc.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -57,9 +60,14 @@ public class DetalhesProdutosActivity extends AppCompatActivity {
             carouselview.setPageCount(anuncioSelecionado.getFotos().size());
             carouselview.setImageListener(imageListener);
 
-        }else{
-
         }
+
+    }
+
+    public void visualizarTelefone(View view){
+
+        Intent i = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", "11974570739", null));
+        startActivity(i);
 
     }
 
