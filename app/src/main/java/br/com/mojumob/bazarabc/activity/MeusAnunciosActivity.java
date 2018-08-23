@@ -68,6 +68,7 @@ public class MeusAnunciosActivity extends AppCompatActivity {
             public void onLongItemClick(View view, int position) {
                 Anuncio anuncioSelecionado = listaAnuncios.get(position);
                 anuncioSelecionado.remover();
+                adapter.notifyDataSetChanged();
 
             }
 
