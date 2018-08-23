@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +23,7 @@ import java.util.List;
 import br.com.mojumob.bazarabc.R;
 import br.com.mojumob.bazarabc.adapter.AdapterAnuncios;
 import br.com.mojumob.bazarabc.helper.ConfiguracaoFirebase;
+import br.com.mojumob.bazarabc.helper.RecyclerItemClickListener;
 import br.com.mojumob.bazarabc.model.Anuncio;
 
 
@@ -53,6 +55,27 @@ public class MeusAnunciosActivity extends AppCompatActivity {
 
         //Recupera o anuncio para o usuario
         recuperaAnuncios();
+
+        //Adiciona evento de clique ao RecyclerView
+        recyclerAnuncios.addOnItemTouchListener(new RecyclerItemClickListener(
+                MeusAnunciosActivity.this, recyclerAnuncios, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+                Anuncio anuncioSelecionado = listaAnuncios.get(position);
+                anuncioSelecionado.remover();
+
+            }
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        }));
 
 
 

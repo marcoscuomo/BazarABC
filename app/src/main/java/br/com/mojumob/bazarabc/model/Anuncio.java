@@ -47,6 +47,10 @@ public class Anuncio {
                 .setValue(this);
     }
 
+    public void remover(){
+
+    }
+
     public String getIdAnuncio() {
         return idAnuncio;
     }
