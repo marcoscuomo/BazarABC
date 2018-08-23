@@ -29,7 +29,9 @@ public class DetalhesProdutosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalhes_produtos);
 
         //Configura a Toolbar
-
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Detalhes do produto");
 
         //Inicializa os componentes da interface
         inicializaComponentes();
