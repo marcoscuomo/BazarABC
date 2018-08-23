@@ -77,7 +77,9 @@ public class AnunciosActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position) {
                 Anuncio anuncioSelecionado = listaAnuncios.get(position);
-
+                Intent i = new Intent(AnunciosActivity.this, DetalhesProdutosActivity.class);
+                i.putExtra("anuncioSelecionado", anuncioSelecionado);
+                startActivity(i);
             }
 
             @Override
