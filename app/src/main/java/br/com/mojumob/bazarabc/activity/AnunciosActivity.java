@@ -11,7 +11,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -74,6 +76,24 @@ public class AnunciosActivity extends AppCompatActivity {
 
         AlertDialog.Builder dialogCidade = new AlertDialog.Builder(this);
         dialogCidade.setTitle("Selecione a cidade desejada");
+
+        //Configura o spinner
+        View viewSpninner = getLayoutInflater() .inflate(R.layout.dialog_spinner, null);
+        dialogCidade.setView(viewSpninner);
+
+        Spinner spCidade = viewSpninner.findViewById(R.id.spinnerFiltro);
+        String[] cidades = new String[]{
+                "Diadema","Santo André", "São Bernardo", "São Caetano"
+        };
+
+        //Configura o spinner Cidades
+        ArrayAdapter<String> adapterCidades = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, cidades
+        );
+        adapterCidades.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spCidade.setAdapter(adapterCidades);
+
+
 
         dialogCidade.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
