@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -43,6 +44,8 @@ public class AnunciosActivity extends AppCompatActivity {
     private DatabaseReference anunciosPublicosRef;
     private AlertDialog dialog;
     private String filtroCidade = "";
+    private String filtroCategoria = "";
+    private Boolean filtrandoPorCidade = false;
     //private Toolbar toolbar;
 
 
@@ -101,6 +104,7 @@ public class AnunciosActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 filtroCidade = spCidade.getSelectedItem().toString();
                 recuperarAnucioPorCidade();
+                filtrandoPorCidade = true;
 
             }
         });
@@ -114,6 +118,86 @@ public class AnunciosActivity extends AppCompatActivity {
 
         Dialog dialog = dialogCidade.create();
         dialog.show();
+
+    }
+
+    public void filtraPorCategoria(View view){
+
+        if(filtrandoPorCidade){
+
+            AlertDialog.Builder dialogCidade = new AlertDialog.Builder(this);
+            dialogCidade.setTitle("Selecione a categoria desejada");
+
+            //Configura o spinner
+            View viewSpninner = getLayoutInflater() .inflate(R.layout.dialog_spinner, null);
+            dialogCidade.setView(viewSpninner);
+
+            final Spinner spCategoria = viewSpninner.findViewById(R.id.spinnerFiltro);
+            String[] categorias = new String[]{
+                    "Automóveis","Imóveis", "Eletronicos", "Moda", "Esportes", "Música", "Infantil", "Agro"
+            };
+
+            //Configura o spinner Cidades
+            ArrayAdapter<String> adapterCidades = new ArrayAdapter<String>(
+                    this, android.R.layout.simple_spinner_item, categorias
+            );
+            adapterCidades.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spCategoria.setAdapter(adapterCidades);
+
+
+
+            dialogCidade.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    filtroCategoria = spCategoria.getSelectedItem().toString();
+                    recuperarAnucioPorCategoria();
+
+                }
+            });
+
+            dialogCidade.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+
+            Dialog dialog = dialogCidade.create();
+            dialog.show();
+
+        }else{
+            Toast.makeText(this, "Escolha primeiro uma região", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+    }
+
+    private void recuperarAnucioPorCategoria() {
+
+        anunciosPublicosRef = ConfiguracaoFirebase.getFirebase()
+                .child("anuncios")
+                .child(filtroCidade);
+
+        anunciosPublicosRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listaAnuncios.clear();
+                for (DataSnapshot anunciosDS :
+                        dataSnapshot.getChildren()) {
+                    Anuncio anuncio = anunciosDS.getValue(Anuncio.class);
+                    listaAnuncios.add(anuncio);
+                }
+
+                Collections.reverse(listaAnuncios);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
