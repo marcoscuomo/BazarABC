@@ -36,7 +36,13 @@
                 android:value="br.com.mojumob.bazarabc.activity.AnunciosActivity" />
         </activity>
         <activity android:name=".activity.CadastroAnuncioActivity" />
-        <activity android:name=".activity.DetalhesProdutosActivity"></activity>
+
+        <activity android:name=".activity.DetalhesProdutosActivity"
+            android:parentActivityName=".activity.AnunciosActivity">
+
+        </activity>
+
+
     </application>
 
 </manifest>
