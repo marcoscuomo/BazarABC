@@ -207,7 +207,7 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
         String cidade = spCidade.getSelectedItem().toString();
         String categoria = spCategoria.getSelectedItem().toString();
         String titulo = edtTitulo.getText().toString();
-        String valor = String.valueOf(campoValor.getRawValue());
+        String valor = campoValor.getText().toString();
         String descricao = edtDescricao.getText().toString();
 
         Anuncio anuncio = new Anuncio();
@@ -224,12 +224,13 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
     private boolean validaDadosAnuncio() {
 
         anuncio = configurarAnuncio();
+        String valor = String.valueOf(campoValor.getRawValue());
 
         if(listaFotosRecuperada.size() != 0){
             if(!anuncio.getCidade().isEmpty()){
                 if(!anuncio.getCategoria().isEmpty()){
                     if(!anuncio.getTitulo().isEmpty()){
-                        if(!anuncio.getValor().isEmpty() && !anuncio.getValor().equals("0")){
+                        if(!valor.isEmpty() && !valor.equals("0")){
                             if(!anuncio.getDescricao().isEmpty()){
                                 return true;
                             }else{
