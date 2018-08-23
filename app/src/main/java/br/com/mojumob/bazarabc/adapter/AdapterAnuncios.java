@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import br.com.mojumob.bazarabc.R;
 import br.com.mojumob.bazarabc.model.Anuncio;
 
 public class AdapterAnuncios extends RecyclerView.Adapter<AdapterAnuncios.MyViewHolder> {
@@ -27,19 +28,23 @@ public class AdapterAnuncios extends RecyclerView.Adapter<AdapterAnuncios.MyView
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate();
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_anuncio, viewGroup, false);
 
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
+
+        Anuncio anuncio = listaAnuncios.get(i);
+        holder.titulo.setText(anuncio.getTitulo());
+        holder.valor.setText(anuncio.getValor());
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listaAnuncios.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
@@ -49,6 +54,10 @@ public class AdapterAnuncios extends RecyclerView.Adapter<AdapterAnuncios.MyView
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            titulo = itemView.findViewById(R.id.adapterAnuncio_txtTituo);
+            valor = itemView.findViewById(R.id.adapterAnuncio_txtPreco);
+            foto = itemView.findViewById(R.id.adapterAnuncio_imgAnuncio);
         }
     }
 
