@@ -1,18 +1,35 @@
 package br.com.mojumob.bazarabc.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
+import br.com.mojumob.bazarabc.model.Anuncio;
+
 public class AdapterAnuncios extends RecyclerView.Adapter<AdapterAnuncios.MyViewHolder> {
+
+    private Context context;
+    private List<Anuncio> listaAnuncios;
+
+    public AdapterAnuncios(Context context, List<Anuncio> listaAnuncios) {
+        this.context = context;
+        this.listaAnuncios = listaAnuncios;
+    }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return null;
+
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate();
+
+        return new MyViewHolder(view);
     }
 
     @Override
