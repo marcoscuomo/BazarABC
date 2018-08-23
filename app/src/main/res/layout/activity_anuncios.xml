@@ -20,7 +20,8 @@
             android:layout_weight="1"
             style="?attr/buttonBarButtonStyle"
             android:textColor="@color/colorPrimary"
-            android:text="@string/regiao" />
+            android:text="@string/regiao"
+            android:onClick="filtraPorCidade"/>
 
         <TextView
             android:layout_width="wrap_content"
