@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import br.com.mojumob.bazarabc.R;
@@ -39,6 +41,13 @@ public class AdapterAnuncios extends RecyclerView.Adapter<AdapterAnuncios.MyView
         Anuncio anuncio = listaAnuncios.get(i);
         holder.titulo.setText(anuncio.getTitulo());
         holder.valor.setText(anuncio.getValor());
+
+        //Pegando a primeira imagem da lista
+        List<String> urlFotos = anuncio.getFotos();
+        String urlCapa = urlFotos.get(0);
+
+        //Exbindo a imagem
+        Picasso.get().load(urlCapa).into(holder.foto);
 
     }
 
