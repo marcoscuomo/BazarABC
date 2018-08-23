@@ -2,6 +2,7 @@ package br.com.mojumob.bazarabc.activity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,7 +10,6 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,21 +20,19 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.blackcat.currencyedittext.CurrencyEditText;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 import br.com.mojumob.bazarabc.R;
 import br.com.mojumob.bazarabc.helper.ConfiguracaoFirebase;
 import br.com.mojumob.bazarabc.helper.Permissoes;
 import br.com.mojumob.bazarabc.model.Anuncio;
+import dmax.dialog.SpotsDialog;
 
 public class CadastroAnuncioActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -45,6 +43,7 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
     private ImageView imgAnuncio1, imgAnuncio2, imgAnuncio3;
     private Button btnCadastrar;
     private Anuncio anuncio;
+    private AlertDialog dialog;
     private StorageReference storage;
     private List<String> listaFotosRecuperada = new ArrayList<>();
     private List<String> listaUrlFotos = new ArrayList<>();
@@ -155,6 +154,13 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
 
     private void salvarAnuncio() {
 
+        dialog = new SpotsDialog.Builder()
+                        .setContext(this)
+                        .setMessage("Salvando o anúncio")
+                        .setCancelable(false)
+                        .build();
+        dialog.show();
+
         if(validaDadosAnuncio()){
 
             //Salvar imagens no storage
@@ -189,6 +195,8 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements View.O
                 if(totalFotos == listaUrlFotos.size()){
                     anuncio.setFotos(listaUrlFotos);
                     anuncio.salvar();
+                    dialog.dismiss();
+                    finish();
                 }
 
             }
