@@ -1,5 +1,6 @@
 package br.com.mojumob.bazarabc.activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
@@ -25,6 +26,7 @@ import br.com.mojumob.bazarabc.adapter.AdapterAnuncios;
 import br.com.mojumob.bazarabc.helper.ConfiguracaoFirebase;
 import br.com.mojumob.bazarabc.helper.RecyclerItemClickListener;
 import br.com.mojumob.bazarabc.model.Anuncio;
+import dmax.dialog.SpotsDialog;
 
 
 public class MeusAnunciosActivity extends AppCompatActivity {
@@ -36,6 +38,7 @@ public class MeusAnunciosActivity extends AppCompatActivity {
     private List<Anuncio> listaAnuncios = new ArrayList<>();
     private AdapterAnuncios adapter;
     private DatabaseReference anuncioUsuarioRef;
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +96,14 @@ public class MeusAnunciosActivity extends AppCompatActivity {
     }
 
     private void recuperaAnuncios() {
+
+        dialog = new SpotsDialog.Builder()
+                .setContext(this)
+                .setMessage("Recuperando o anúncios")
+                .setCancelable(false)
+                .build();
+        dialog.show();
+
         anuncioUsuarioRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -103,6 +114,7 @@ public class MeusAnunciosActivity extends AppCompatActivity {
                 }
                 Collections.reverse(listaAnuncios);
                 adapter.notifyDataSetChanged();
+                dialog.dismiss();
             }
 
             @Override
