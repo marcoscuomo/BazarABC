@@ -19,4 +19,5 @@
     <string name="celular">Celular</string>
     <string name="regiao">Região</string>
     <string name="categoria">Categoria</string>
+    <string name="ligar">Ligar</string>
 </resources>
