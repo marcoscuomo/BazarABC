@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.CarouselView;
@@ -16,10 +17,12 @@ import br.com.mojumob.bazarabc.model.Anuncio;
 public class DetalhesProdutosActivity extends AppCompatActivity {
 
     //Atributos
-    private CarouselView carouselView;
+    private CarouselView carouselview;
     private TextView txtTitulo, txtPreco, txtDescricao, txtCidade;
     private Button btnLigar;
     private Anuncio anuncioSelecionado;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,7 @@ public class DetalhesProdutosActivity extends AppCompatActivity {
         anuncioSelecionado = (Anuncio) getIntent().getSerializableExtra("anuncioSelecionado");
 
         if(anuncioSelecionado != null){
+
             txtTitulo.setText(anuncioSelecionado.getTitulo());
             txtPreco.setText(anuncioSelecionado.getValor());
             txtCidade.setText(anuncioSelecionado.getCidade());
@@ -50,8 +54,11 @@ public class DetalhesProdutosActivity extends AppCompatActivity {
                 }
             };
 
-            carouselView.setPageCount(anuncioSelecionado.getFotos().size());
-            carouselView.setImageListener(imageListener);
+            carouselview.setPageCount(anuncioSelecionado.getFotos().size());
+            carouselview.setImageListener(imageListener);
+
+        }else{
+
         }
 
     }
@@ -62,5 +69,6 @@ public class DetalhesProdutosActivity extends AppCompatActivity {
         txtCidade = findViewById(R.id.detalhes_txtCidade);
         txtDescricao = findViewById(R.id.detalhes_txtDescricao);
         btnLigar = findViewById(R.id.detalhes_btnLigar);
+        carouselview = findViewById(R.id.carouselView);
     }
 }
