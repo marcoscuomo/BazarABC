@@ -1,10 +1,8 @@
 package br.com.mojumob.bazarabc.model;
 
 import com.google.firebase.database.DatabaseReference;
-
 import java.io.Serializable;
 import java.util.List;
-
 import br.com.mojumob.bazarabc.helper.ConfiguracaoFirebase;
 
 public class Anuncio implements Serializable {
