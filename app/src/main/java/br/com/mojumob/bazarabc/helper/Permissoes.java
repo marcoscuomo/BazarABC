@@ -5,13 +5,9 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by jamiltondamasceno
- */
 
 public class Permissoes {
 

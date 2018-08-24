@@ -1,4 +1,4 @@
-package br.com.mojumob.bazarabc.adapter;
+package br.com.mojumob.bazarabc.ui.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
