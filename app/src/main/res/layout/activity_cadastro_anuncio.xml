@@ -49,15 +49,13 @@
             android:id="@+id/cadastroAnuncio_spCidade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
+            android:layout_weight="1" />
 
         <Spinner
             android:id="@+id/cadastroAnuncio_spCategoria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
+            android:layout_weight="1" />
 
 
     </LinearLayout>
@@ -95,7 +93,6 @@
         android:layout_marginTop="15dp"
         android:text="@string/cadastrar_anuncio"
         android:background="@drawable/style_btn_login"
-        android:textColor="@android:color/white"
-        />
+        android:textColor="@android:color/white" />
 
 </LinearLayout>
