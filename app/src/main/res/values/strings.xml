@@ -20,4 +20,16 @@
     <string name="regiao">Região</string>
     <string name="categoria">Categoria</string>
     <string name="ligar">Ligar</string>
+    <string name="diadema">Diadema</string>
+    <string name="santoAndre">Santo André</string>
+    <string name="saoBernardo">São Bernardo</string>
+    <string name="saoCaetano">São Caetano</string>
+    <string name="automoveis">Automóveis</string>
+    <string name="imoveis">Imóveis</string>
+    <string name="eletronicos">Eletronicos</string>
+    <string name="moda">Moda</string>
+    <string name="esportes">Esportes</string>
+    <string name="musica">Música</string>
+    <string name="infantil">Infantil</string>
+    <string name="agro">Agro</string>
 </resources>
